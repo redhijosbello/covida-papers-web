@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import FormResultsContainer from './components/FormResultsContainer';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap-css-only/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FormResultsContainer />
   </React.StrictMode>,
   document.getElementById('root')
 );
