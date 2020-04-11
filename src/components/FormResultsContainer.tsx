@@ -5,39 +5,65 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+class FormState {
+  loading: boolean = false;
+  titleParam: string = "";
+  contentParam: string = "";
+  titleParamValid = false;
+  contentParamValid = false;
+}
 
-function FormResultsContainer() {
+class FormResultsContainer extends React.Component<any, FormState> {
+  constructor(props: any) {
+    super(props);
+    this.state = new FormState();
+  }
 
-  const handleSubmit = () => {
+  handleTitleParam = (event: any) => {
+    let titleParam: string = event.target.value;
+    this.setState({
+      titleParam: event.target.value,
+      titleParamValid: titleParam.length > 0
+    });
+  };
+
+  handleSubmit = () => {
     console.log("hello!");
   };
 
-  return (
-    <Container>
-      <Row className={"mt-2"}>
-        <Col xs={12}>
-          <p className="text-center h2 text-primary font-weight-bold">COVIDA</p>
-        </Col>
-      </Row>
-      <Row className="mt-3">
-        <Col md={6}>
-            <Form.Group controlId="titleKeyword">
+  render() {
+    return (
+      <Container>
+        <Row className={"mt-2"}>
+          <Col xs={12}>
+            <p className="text-center h2 text-primary font-weight-bold">COVIDA</p>
+          </Col>
+        </Row>
+        <Row className="mt-3">
+          <Col md={6}>
+            <Form.Group>
               <Form.Label>Palabra en título</Form.Label>
-              <Form.Control type="text" placeholder="Ej: mask" />
+              <Form.Control type="text" placeholder="Ej: mask"
+                            onChange={this.handleTitleParam}
+                            value={this.state.titleParam}
+              />
             </Form.Group>
-        </Col>
-        <Col md={6}>
-            <Form.Group controlId="contentKeyword">
+          </Col>
+          <Col md={6}>
+            <Form.Group>
               <Form.Label>Palabra en contenido</Form.Label>
               <Form.Control type="text" placeholder="Ej: covid-19" />
             </Form.Group>
-            <Button className="float-right" onClick={handleSubmit}>
+            <Button className="float-right" onClick={this.handleSubmit}
+                    disabled={!this.state.titleParamValid}
+            >
               Buscar
             </Button>
-        </Col>
-      </Row>
-    </Container>
-  );
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default FormResultsContainer;
