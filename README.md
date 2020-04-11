@@ -1,5 +1,7 @@
 # covida-papers-web
 
+Proyecto hecho en React con Typescript.
+
 ### Requisitos
 
 - node 12.16.2 (LTS)
