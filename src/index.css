@@ -7,5 +7,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
     width:100%;
     height:100%;
-    background-color: #0275d8;
+    background-color: #FFFAFA;
+}
+
+.myColorPrimary {
+    color: #004887
 }
