@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import FormResultsContainer from './components/FormResultsContainer';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap-css-only/css/bootstrap.min.css';
-import './index.css'
+import './index.scss'
 
 ReactDOM.render(
   <React.StrictMode>

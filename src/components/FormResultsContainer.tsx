@@ -8,10 +8,8 @@ import Button from 'react-bootstrap/Button';
 
 function FormResultsContainer() {
 
-  const handleSubmit = (event: any) => {
-    const form = event.currentTarget;
-    event.preventDefault();
-    event.stopPropagation();
+  const handleSubmit = () => {
+    console.log("hello!");
   };
 
   return (
@@ -33,8 +31,8 @@ function FormResultsContainer() {
               <Form.Label>Palabra en contenido</Form.Label>
               <Form.Control type="text" placeholder="Ej: covid-19" />
             </Form.Group>
-            <Button className="float-right">
-              Submit
+            <Button className="float-right" onClick={handleSubmit}>
+              Buscar
             </Button>
         </Col>
       </Row>
