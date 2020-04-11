@@ -10,6 +10,8 @@ body {
     background-color: #FFFAFA;
 }
 
-.myColorPrimary {
-    color: #004887
-}
+$theme-colors: (
+    "primary": #004887,
+);
+
+@import '~bootstrap/scss/bootstrap';

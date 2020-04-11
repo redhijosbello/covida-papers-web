@@ -14,9 +14,9 @@ function FormResultsContainer() {
 
   return (
     <Container>
-      <Row>
+      <Row className={"mt-2"}>
         <Col xs={12}>
-          <p className="text-center h2 myColorPrimary font-weight-bold">COVIDA</p>
+          <p className="text-center h2 text-primary font-weight-bold">COVIDA</p>
         </Col>
       </Row>
       <Row className="mt-3">
