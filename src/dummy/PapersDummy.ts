@@ -11,6 +11,6 @@ export const dummyPapers: PaperData[] = [
   },
   {
     title: "Some random paper 3",
-    url: "www.google.cl"
+    url: "https://www.google.cl"
   },
 ];
