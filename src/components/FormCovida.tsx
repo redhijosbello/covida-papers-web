@@ -29,6 +29,11 @@ const FormCovida: React.FC<FormProps> = (props) => {
     setFormState({titleParam, titleParamValid: titleParam.length > 0});
   };
 
+  const handleContentParam = (event: any) => {
+    let contentParam: string = event.target.value;
+    setFormState({contentParam, contentParamValid: contentParam.length > 0});
+  };
+
   const handleSubmit = () => {
     console.log("hello!");
   };
@@ -43,7 +48,7 @@ const FormCovida: React.FC<FormProps> = (props) => {
       <Row className="mt-3">
         <Col md={6}>
           <Form.Group>
-            <Form.Label>Palabra en título</Form.Label>
+            <Form.Label>* Palabra en título</Form.Label>
             <Form.Control type="text" placeholder="Ej: mask"
                           onChange={handleTitleParam}
                           value={formState.titleParam}
@@ -52,11 +57,14 @@ const FormCovida: React.FC<FormProps> = (props) => {
         </Col>
         <Col md={6}>
           <Form.Group>
-            <Form.Label>Palabra en contenido</Form.Label>
-            <Form.Control type="text" placeholder="Ej: covid-19" />
+            <Form.Label>* Palabra en contenido</Form.Label>
+            <Form.Control type="text" placeholder="Ej: covid-19"
+                          onChange={handleContentParam}
+                          value={formState.contentParam}
+            />
           </Form.Group>
           <Button className="float-right" onClick={handleSubmit}
-                  disabled={!formState.titleParamValid}
+                  disabled={!(formState.titleParamValid && formState.contentParamValid)}
           >
             Buscar
           </Button>
