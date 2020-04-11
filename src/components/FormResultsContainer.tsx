@@ -13,12 +13,12 @@ class FormState {
   contentParamValid = false;
 }
 
-function reducer(state: FormState, updateParams: any) {
+const reducer: React.Reducer<FormState, any> = (state, updateParams) => {
   return {...state, ...updateParams};
-}
+};
 
 function FormResultsContainer() {
-  const [formState, setFormState] = useReducer(reducer, new FormState());
+  const [formState, setFormState] = useReducer<React.Reducer<FormState, any>>(reducer, new FormState());
 
   const handleTitleParam = (event: any) => {
     let titleParam: string = event.target.value;
