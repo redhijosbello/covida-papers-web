@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 interface FormProps {
   resultsCallback: (results: any[]) => void;
@@ -35,7 +36,14 @@ const FormCovida: React.FC<FormProps> = (props) => {
   };
 
   const handleSubmit = () => {
-    console.log("hello!");
+    setFormState({loading: true});
+    setTimeout(
+      () => {
+        props.resultsCallback(['hola', 'uwu']);
+        setFormState({loading: false})
+      },
+      2000
+    );
   };
 
   return (
@@ -64,8 +72,18 @@ const FormCovida: React.FC<FormProps> = (props) => {
             />
           </Form.Group>
           <Button className="float-right" onClick={handleSubmit}
-                  disabled={!(formState.titleParamValid && formState.contentParamValid)}
+                  disabled={!(formState.titleParamValid && formState.contentParamValid) || formState.loading}
           >
+            {formState.loading &&
+              <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  className="mr-1"
+              />
+            }
             Buscar
           </Button>
         </Col>
