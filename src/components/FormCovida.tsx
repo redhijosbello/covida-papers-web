@@ -5,9 +5,11 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import {PaperData} from "../dataClasses/PaperData";
+import {dummyPapers} from "../dummy/PapersDummy";
 
 interface FormProps {
-  resultsCallback: (results: any[]) => void;
+  resultsCallback: (results: PaperData[]) => void;
 }
 
 class FormState {
@@ -39,7 +41,7 @@ const FormCovida: React.FC<FormProps> = (props) => {
     setFormState({loading: true});
     setTimeout(
       () => {
-        props.resultsCallback(['hola', 'uwu']);
+        props.resultsCallback(dummyPapers);
         setFormState({loading: false})
       },
       2000

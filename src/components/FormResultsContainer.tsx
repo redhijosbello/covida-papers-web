@@ -3,10 +3,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormCovida from "./FormCovida";
+import {PaperData} from "../dataClasses/PaperData";
 
 function FormResultsContainer() {
 
-  const receiveResults = (results: any[]) => {
+  const receiveResults = (results: PaperData[]) => {
     console.log(results);
   };
 
