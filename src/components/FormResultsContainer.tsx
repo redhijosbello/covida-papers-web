@@ -9,7 +9,7 @@ function FormResultsContainer() {
     <Container>
       <Row>
         <Col xs={12}>
-          <h1 className="text-center display-3">COVIDA</h1>
+          <p className="text-center h2 text-white font-weight-bold">COVIDA</p>
         </Col>
       </Row>
     </Container>
