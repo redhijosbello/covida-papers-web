@@ -22,20 +22,20 @@ function FormResultsContainer() {
         </Col>
       </Row>
       <Row className="mt-3">
-        <Col sm={12} md={6}>
-          <Form onSubmit={handleSubmit}>
+        <Col md={6}>
             <Form.Group controlId="titleKeyword">
               <Form.Label>Palabra en título</Form.Label>
               <Form.Control type="text" placeholder="Ej: mask" />
             </Form.Group>
+        </Col>
+        <Col md={6}>
             <Form.Group controlId="contentKeyword">
               <Form.Label>Palabra en contenido</Form.Label>
               <Form.Control type="text" placeholder="Ej: covid-19" />
             </Form.Group>
-            <Button type="submit">
+            <Button className="float-right">
               Submit
             </Button>
-          </Form>
         </Col>
       </Row>
     </Container>
