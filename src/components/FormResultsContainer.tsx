@@ -21,7 +21,7 @@ function FormResultsContainer() {
         </Col>
       </Row>
       {papers.length > 0 &&
-      <Row className={"mt-2"}>
+      <Row className={"my-4"}>
           <Col xs={12}>
               <ListGroup>
                 {
