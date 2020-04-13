@@ -1,5 +1,4 @@
 import React, {useReducer} from 'react';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -7,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import {PaperData} from "../dataClasses/PaperData";
 import {dummyPapers} from "../dummy/PapersDummy";
+import {PaperSource} from "../enums/PaperSource";
 
 interface FormProps {
   resultsCallback: (results: PaperData[]) => void;
@@ -18,6 +18,7 @@ class FormState {
   contentParam: string = "";
   titleParamValid = false;
   contentParamValid = false;
+  paperSource: PaperSource = PaperSource.ARXIV;
 }
 
 const reducer: React.Reducer<FormState, any> = (state, updateParams) => {
@@ -46,6 +47,10 @@ const FormCovida: React.FC<FormProps> = (props) => {
       },
       2000
     );
+  };
+
+  const handleSource = (event: any) => {
+    setFormState({paperSource: event.target.value});
   };
 
   return (
@@ -80,12 +85,14 @@ const FormCovida: React.FC<FormProps> = (props) => {
         <Col md={6}>
           <Form.Group>
             <Form.Label>* Fuente de papers</Form.Label>
-            <Form.Control as="select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <Form.Control as="select"
+                          onChange={(event: any) => handleSource(event)}
+                          value={formState.paperSource}>
+              <>{
+                Object.keys(PaperSource).filter(k => typeof PaperSource[k as any] === "number").map((key, idx) => {
+                    return <option value={PaperSource[key as any]} key={idx}>{key}</option>
+                  })
+              }</>
             </Form.Control>
           </Form.Group>
           <Button className="float-right" onClick={handleSubmit}
