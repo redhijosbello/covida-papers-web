@@ -73,6 +73,21 @@ const FormCovida: React.FC<FormProps> = (props) => {
                           value={formState.contentParam}
             />
           </Form.Group>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={6}></Col>
+        <Col md={6}>
+          <Form.Group>
+            <Form.Label>* Fuente de papers</Form.Label>
+            <Form.Control as="select">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Form.Control>
+          </Form.Group>
           <Button className="float-right" onClick={handleSubmit}
                   disabled={!(formState.titleParamValid && formState.contentParamValid) || formState.loading}
           >
