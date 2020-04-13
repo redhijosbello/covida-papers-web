@@ -1,16 +1,26 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormCovida from "./FormCovida";
 import PaperResults from "./PaperResults";
 import {PaperData} from "../dataClasses/PaperData";
+import Form from "react-bootstrap/Form";
+
+class FormResultsContainerState {
+  alreadyFetched: boolean = false;
+  papers: PaperData[] = [];
+}
+
+const reducer: React.Reducer<FormResultsContainerState, any> = (state, updateParams) => {
+  return {...state, ...updateParams};
+};
 
 function FormResultsContainer() {
-  const [papers, setPapers] = useState<PaperData[]>([]);
+  const [state, setState] = useReducer<React.Reducer<FormResultsContainerState, any>>(reducer, new FormResultsContainerState());
 
   const receiveResults = (results: PaperData[]) => {
-    setPapers(results);
+    setState({papers: results, alreadyFetched: true});
   };
 
   return (
@@ -20,13 +30,16 @@ function FormResultsContainer() {
           <FormCovida resultsCallback={receiveResults}/>
         </Col>
       </Row>
-      {papers.length > 0 &&
       <Row className={"my-4"}>
           <Col xs={12}>
-              <PaperResults papers={papers}/>
+            {state.papers.length > 0 &&
+              <PaperResults papers={state.papers}/>
+            }
+            {state.papers.length === 0 && state.alreadyFetched &&
+              <div className="mx-3">Sin resultados.</div>
+            }
           </Col>
       </Row>
-      }
     </Container>
   );
 }
