@@ -7,6 +7,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import {PaperData} from "../dataClasses/PaperData";
 import {dummyPapers} from "../dummy/PapersDummy";
 import {PaperSource} from "../enums/PaperSource";
+import PaperSourceOptions from "./PaperSourceOptions";
 
 interface FormProps {
   resultsCallback: (results: PaperData[]) => void;
@@ -88,11 +89,7 @@ const FormCovida: React.FC<FormProps> = (props) => {
             <Form.Control as="select"
                           onChange={(event: any) => handleSource(event)}
                           value={formState.paperSource}>
-              <>{
-                Object.keys(PaperSource).filter(k => typeof PaperSource[k as any] === "number").map((key, idx) => {
-                    return <option value={PaperSource[key as any]} key={idx}>{key}</option>
-                  })
-              }</>
+              <PaperSourceOptions/>
             </Form.Control>
           </Form.Group>
           <Button className="float-right" onClick={handleSubmit}
