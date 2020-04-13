@@ -60,7 +60,7 @@ const FormCovida: React.FC<FormProps> = (props) => {
   };
 
   const handleSource = (event: any) => {
-    setFormState({paperSource: event.target.value});
+    setFormState({paperSource: parseInt(event.target.value)});
   };
 
   return (
