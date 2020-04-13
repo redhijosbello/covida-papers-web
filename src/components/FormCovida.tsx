@@ -43,20 +43,15 @@ const FormCovida: React.FC<FormProps> = (props) => {
 
   const handleSubmit = () => {
     setFormState({loading: true});
-    setTimeout(
-      () => {
-        papersService.fetch(
-          formState.titleParam,
-          formState.contentParam,
-          formState.paperSource
-        ).then((results: PaperData[]) => {
-          props.resultsCallback(results);
-        }).finally(() => {
-          setFormState({loading: false})
-        });
-      },
-      2000
-    );
+    papersService.fetch(
+      formState.titleParam,
+      formState.contentParam,
+      formState.paperSource
+    ).then((results: PaperData[]) => {
+      props.resultsCallback(results);
+    }).finally(() => {
+      setFormState({loading: false})
+    });
   };
 
   const handleSource = (event: any) => {

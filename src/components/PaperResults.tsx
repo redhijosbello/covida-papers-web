@@ -12,7 +12,7 @@ const PaperResults: React.FC<Results> = (props) => {
       props.papers.map((paper: PaperData) => {
         return <ListGroup.Item key={paper.title}>
           <a target="_blank" rel="noopener noreferrer"
-             href={paper.url}>{paper.title}</a>
+             href={paper.link}>{paper.title}</a>
         </ListGroup.Item>
       })
     }
