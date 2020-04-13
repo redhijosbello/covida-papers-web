@@ -109,7 +109,12 @@ const FormCovida: React.FC<FormProps> = (props) => {
                   className="mr-1"
               />
             }
-            Buscar
+            {formState.loading &&
+              <>Esto puede demorar...</>
+            }
+            {!formState.loading &&
+              <>Buscar</>
+            }
           </Button>
         </Col>
       </Row>
