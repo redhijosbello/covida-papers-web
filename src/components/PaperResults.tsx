@@ -7,7 +7,7 @@ interface Results {
 }
 
 const PaperResults: React.FC<Results> = (props) => {
-  return <ListGroup>
+  return <ListGroup className="mx-3">
     {
       props.papers.map((paper: PaperData) => {
         return <ListGroup.Item key={paper.title}>

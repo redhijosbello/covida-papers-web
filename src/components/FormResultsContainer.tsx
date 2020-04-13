@@ -1,11 +1,10 @@
-import React, {useReducer, useState} from 'react';
+import React, {useReducer} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormCovida from "./FormCovida";
 import PaperResults from "./PaperResults";
 import {PaperData} from "../dataClasses/PaperData";
-import Form from "react-bootstrap/Form";
 
 class FormResultsContainerState {
   alreadyFetched: boolean = false;

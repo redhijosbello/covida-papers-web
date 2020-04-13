@@ -49,7 +49,7 @@ const FormCovida: React.FC<FormProps> = (props) => {
   };
 
   return (
-    <Container>
+    <div className="mx-3">
       <Row className={"mt-2"}>
         <Col xs={12}>
           <p className="text-center h2 text-primary font-weight-bold">COVIDA</p>
@@ -90,7 +90,7 @@ const FormCovida: React.FC<FormProps> = (props) => {
           </Button>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 
