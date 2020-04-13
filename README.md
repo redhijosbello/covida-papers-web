@@ -17,3 +17,9 @@ __Nota:__ en Windows, instalar node desde el paquete .msi, y en la opción de in
 
 - npm run start  
 - Ingresar a http://localhost:3000, por ahora es una interfaz dummy solamente.
+
+### Build y deploy
+
+- npm run build
+
+El comando anterior genera una carpeta build/ en la cual estan los archivos a 'servir' (index.html, css y js).
