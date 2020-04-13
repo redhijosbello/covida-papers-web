@@ -5,9 +5,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import {PaperData} from "../dataClasses/PaperData";
-import {dummyPapers} from "../dummy/PapersDummy";
 import {PaperSource} from "../enums/PaperSource";
 import PaperSourceOptions from "./PaperSourceOptions";
+import PapersService from "../services/PapersService";
+
+const papersService = new PapersService();
 
 interface FormProps {
   resultsCallback: (results: PaperData[]) => void;
@@ -43,8 +45,15 @@ const FormCovida: React.FC<FormProps> = (props) => {
     setFormState({loading: true});
     setTimeout(
       () => {
-        props.resultsCallback(dummyPapers);
-        setFormState({loading: false})
+        papersService.fetch(
+          formState.titleParam,
+          formState.contentParam,
+          formState.paperSource
+        ).then((results: PaperData[]) => {
+          props.resultsCallback(results);
+        }).finally(() => {
+          setFormState({loading: false})
+        });
       },
       2000
     );
